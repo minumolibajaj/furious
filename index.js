@@ -28,21 +28,25 @@ var isNotValidFunction = function(myfunc){ return !myfunc || typeof myfunc != 'f
 var isElementInArray = function(element , array){ return array.indexOf(element) > -1;};
 var isArrayInArray = function(givenArray , refArray ){ return givenArray.some(function(value){ return isElementInArray(value , refArray); })};
 //command
-exports.command = function(name , defaultOperation){
+exports.command = function(name , description ,  defaultOperation){
 	if( isNotValidFunction(defaultOperation) ) return;
-	var registeredCommand =  new Command(name , defaultOperation); 
+	var registeredCommand =  new Command(name , description , defaultOperation); 
 	commandList.push(registeredCommand);
+	var getIndexOfCommandInList = function(command){
+		return (function () {
+			for (var i = 0; i < commandList.length; i++) return commandList[i].command == this.command ? i : new Error('Command not found.');
+		}).call(command);	
+	};
+	var index = getIndexOfCommandInList(registeredCommand);
+	commandList[index].index = index; 
 	return registeredCommand;
 };
-var Command = function(command , operation ) { 
-	this.command = command ; this.operation = operation ; 
-	this.args  = [] , this.options = [];
-	this.option = function(optionsArray , optionOperation ){
-			if(isNotValidFunction( optionOperation  )) return;
-		   	var index = (function(){ 
-				for(var i=0;i < commandList.length ; i++ ) return commandList[i].command == this.command ? i : new Error('Command not found.');
-			}).call(this);
-			commandList[index].options.push(new Option(optionsArray , optionOperation));
+var Command = function(command , description ,  operation ) { 
+	this.command = command ; this.index = -1 ; this.operation = operation ; this.description = description ;
+	this.args  = [] , this.options = [] ; 
+	this.option = function(optionsArray , description , optionOperation ){
+			if(isNotValidFunction(optionOperation)) return;
+			commandList[this.index].options.push(new Option(optionsArray , description , optionOperation));
 			return this;
 	};
 };
@@ -51,7 +55,8 @@ var getCommandByCommandName = function(name){
 	return commandList.filter(function(cmd){ return cmd.command == name; })[0];
 }
 //Option
-var Option = function( optionNames ,  operation ){
+var Option = function( optionNames , description ,   operation ){
 	this.optionNames = optionNames;
-	this.operation = operation ;
+	this.description = description; 
+	this.operation = operation;
 }
