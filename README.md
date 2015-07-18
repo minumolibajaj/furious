@@ -1,6 +1,6 @@
 Meet __furious__ - [commander](https://www.npmjs.com/package/commander) inspired elegant solution for creating command line tools.
 
-__furious__ is ultra lightweight and less than 100 lines of code. The API is dead simple and have been modified from commander to make few things simpler.
+__furious__ is ultra __lightweight__ and __less than 100 lines of code__. The API is dead simple and have been modified from commander to make few things simpler.
 
 Installation
 ============
@@ -14,9 +14,9 @@ API
 ```javascript
 var furious = require('furious');
 //add commands and options here 
-//start execution of the command.
-furious.parse(process.argv);  
+furious.execution(process.argv); //execute the user given command.  
 ```
+> __NOTE__ : Don't forget to call furious.execute() at the end. It is responsible for executing the user command.
 
 ### .command(commandName , description , callback)
 Create a command with this function.
@@ -46,6 +46,9 @@ furious
   });
 ```
 In this case ,both  ``programname upper -h`` and  ``programname upper --help`` invoke the same callback.
+
+### .execute(process.argv)
+This is where the user given command on the terminal is parsed and executed. It is usual to send ``process.argv`` as parameter here.
 
 Caveats
 =======
