@@ -53,3 +53,12 @@ This is where the user given command on the terminal is parsed and executed. It 
 Caveats
 =======
 - if definition for a command is specified twice then , first definition will be considered and rest are rejected.
+- The package is in beta phase and has few things left behind to do. So watch out for version 1.0.0 , until then , try to play around with it.
+
+Contribution
+============
+More than welcomed. Feel free to send in a pull request or file an issue.
+
+License
+=======
+[The MIT License](https://github.com/scriptnull/furious/blob/master/LICENSE).
