@@ -1,6 +1,9 @@
 Meet __furious__ - [commander](https://www.npmjs.com/package/commander) inspired elegant solution for creating command line tools.
 
+[![Build Status](https://travis-ci.org/scriptnull/furious.svg?branch=master)](https://travis-ci.org/scriptnull/furious)
+
 __furious__ is ultra __lightweight__ and __less than 100 lines of code__. The API is dead simple and have been modified from commander to make few things simpler.
+
 
 Installation
 ============
