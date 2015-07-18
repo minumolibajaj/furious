@@ -14,7 +14,7 @@ API
 ```javascript
 var furious = require('furious');
 //add commands and options here 
-furious.execution(process.argv); //execute the user given command.  
+furious.execute(process.argv); //execute the user given command.  
 ```
 > __NOTE__ : Don't forget to call furious.execute() at the end. It is responsible for executing the user command.
 
