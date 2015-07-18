@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var commandList = [];
-exports.parse = function(argv){
+exports.execute = function(argv){
 	//remove node command and filename
 	argv.shift();argv.shift();
 	//remove command and arg
