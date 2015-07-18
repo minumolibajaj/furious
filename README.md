@@ -26,7 +26,7 @@ Arguments are available as first parameter of callback.
 ```javascript
 furious
   .command('upper' , 'print upper case values' , function(args){
-    var firstArg = arg[0];
+    var firstArg = args[0];
     console.log(firstArg.toUpperCase());
   });
 ```
@@ -38,7 +38,7 @@ Arguments are available as first parameter of callback.
 ```javascript
 furious
   .command('upper' , 'print upper case values' , function(args){
-    var firstArg = arg[0];
+    var firstArg = args[0];
     console.log(firstArg.toUpperCase());
   })
   .option(['-h' ,'--help'] , 'Help for Upper' , function(args){
