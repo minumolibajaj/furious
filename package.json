@@ -1,0 +1,25 @@
+{
+  "name": "furious",
+  "version": "1.0.0",
+  "description": "Develop command line tools furiously",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scriptnull/furious.git"
+  },
+  "keywords": [
+    "command",
+    "cli",
+    "commandline",
+    "commander"
+  ],
+  "author": "Vishnu Bharathi <vishnubharathi04@gmail.com> (https://twitter.com/scriptnull)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scriptnull/furious/issues"
+  },
+  "homepage": "https://github.com/scriptnull/furious"
+}
