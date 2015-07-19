@@ -12,10 +12,10 @@ exports.execute = function(argv , description , noCommandOrOptionOperation , com
 	};
 	if(argv.length == 0) { noCommandOrOptionOperation(); return ; }
 	var currentCommandAndArgs = argv.filter(function(item){ return !isOption(item); });
-	if(currentCommandAndArgs.length == 0 ) { if(noCommandOrOptionOperation) noCommandOrOptionOperation(); return ; }
 	var currentCommandName = currentCommandAndArgs.shift();
 	var currentOptions = argv.filter(isOption);
 	var currentCommand = getCommandByCommandName(currentCommandName);
+	if (!currentCommand ){  if(noCommandOrOptionOperation) noCommandOrOptionOperation(); return ; }
 	if(currentOptions.length == 0)
 		currentCommand.operation.call(this , currentCommandAndArgs );
 	else{
