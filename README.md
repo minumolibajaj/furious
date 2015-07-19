@@ -38,8 +38,11 @@ furious
 
 ### .option( optionNamesArray , description , callback)
 Create options for already existing command.
+- optionNamesArray `array` - Option names. Each option name __should start with - or --__
+- description `array` - Description about the Option.
+- callback `function(args)` - function to be executed when option is given in the command line. _args_ - array of arguments.
+- Example : `programname upper -h` - Here _upper_ is Command name and _-h_ is the option.
 
-Arguments are available as first parameter of callback.
 ```javascript
 furious
   .command('upper' , 'print upper case values' , function(args){
@@ -57,7 +60,7 @@ This is where the user given command on the terminal is parsed and executed.
 - argv `array` - send in __process.argv__ to execute the command given by user.
 - description `string` - Description of the command line tool.
 - noCommandOrOptionOperation `function()` - function to be executed when there is no commands given by user or the command definition is not available.
-- commonOperation `function(argv)` - function to be executed commonly for all the commands. Eg. You may instantiate timers for mesuring the performance of your utility here.
+- commonOperation `function(argv)` - function to be executed commonly for all the commands. Eg. You may instantiate timers for measuring the performance of your utility here.
 
 Caveats
 =======
