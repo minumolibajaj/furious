@@ -23,8 +23,10 @@ furious.execute(process.argv); //execute the user given command.
 
 ### .command(commandName , description , callback)
 Create a command with this function.
-
-Arguments are available as first parameter of callback.
+- commandName `string` - Command Name. 
+- decription `string` - Description for the Command.
+- callback `function(args)` - function to be executed when command is given in the command line. _args_ - array of arguments.
+- Example : `programname upper hello` - Here _upper_ is the Command name and _hello_ is available in _args_ of the callback.
 
 ```javascript
 furious
@@ -50,12 +52,16 @@ furious
 ```
 In this case ,both  ``programname upper -h`` and  ``programname upper --help`` invoke the same callback.
 
-### .execute(process.argv)
-This is where the user given command on the terminal is parsed and executed. It is usual to send ``process.argv`` as parameter here.
+### .execute(argv , description , noCommandOrOptionOperation , commonOperation)
+This is where the user given command on the terminal is parsed and executed. 
+- argv `array` - send in __process.argv__ to execute the command given by user.
+- description `string` - Description of the command line tool.
+- noCommandOrOptionOperation `function()` - function to be executed when there is no commands given by user or the command definition is not available.
+- commonOperation `function(argv)` - function to be executed commonly for all the commands. Eg. You may instantiate timers for mesuring the performance of your utility here.
 
 Caveats
 =======
-- if definition for a command is specified twice then , first definition will be considered and rest are rejected.
+- If definition for a command is specified twice then , first definition will be considered and rest are rejected.
 - The package is in beta phase and has few things left behind to do. So watch out for version 1.0.0 , until then , try to play around with it.
 
 Contribution
