@@ -1,6 +1,6 @@
 {
   "name": "furious",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Develop command line tools furiously",
   "main": "index.js",
   "scripts": {
@@ -21,8 +21,8 @@
   "bugs": {
     "url": "https://github.com/scriptnull/furious/issues"
   },
-  "homepage": "https://github.com/scriptnull/furious", 
+  "homepage": "https://github.com/scriptnull/furious",
   "devDependencies": {
-    "mocha" : "2.2.5"
+    "mocha": "2.2.5"
   }
 }
