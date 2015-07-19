@@ -17,7 +17,7 @@ API
 ```javascript
 var furious = require('furious');
 //add commands and options here 
-furious.execute(process.argv); //execute the user given command.  
+furious.execute(process.argv , 'Tool for doing string operations'); //execute the user given command.  
 ```
 > __NOTE__ : Don't forget to call furious.execute() at the end. It is responsible for executing the user command.
 
@@ -61,6 +61,14 @@ This is where the user given command on the terminal is parsed and executed.
 - description `string` - Description of the command line tool.
 - noCommandOrOptionOperation `function()` - function to be executed when there is no commands given by user or the command definition is not available.
 - commonOperation `function(argv)` - function to be executed commonly for all the commands. Eg. You may instantiate timers for measuring the performance of your utility here.
+
+```javascript
+var noCommandOrOptionOperation = function(){ console.log('Please Specify a Command or Option'); };
+var commonOperation = function(argv){console.log('Welcome to the cli');};
+
+furious.execute(process.argv , 'Cli for something' , noCommandOrOptionOperation , commonOperation );
+```
+Expect for a `printHelp` function in future versions , that can be easily used in _noCommandOrOptionOperation_ and _commonOperation_.
 
 Caveats
 =======
