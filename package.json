@@ -1,6 +1,6 @@
 {
   "name": "furious",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Develop command line tools furiously",
   "main": "index.js",
   "scripts": {
