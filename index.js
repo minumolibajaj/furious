@@ -2,7 +2,7 @@
 var commandList = [] , furious_des ;
 exports.execute = function(argv , description , noCommandOrOptionOperation , commonOperation){
 	//assign descrpition 
-	furious_des = description; commonOperation(argv);
+	furious_des = description;if(commonOperation)commonOperation(argv);
 	//remove node command and filename
 	argv.shift();argv.shift();
 	//remove command and arg
@@ -12,6 +12,7 @@ exports.execute = function(argv , description , noCommandOrOptionOperation , com
 	};
 	if(argv.length == 0) { noCommandOrOptionOperation(); return ; }
 	var currentCommandAndArgs = argv.filter(function(item){ return !isOption(item); });
+	if(currentCommandAndArgs.length == 0 ) { if(noCommandOrOptionOperation) noCommandOrOptionOperation(); return ; }
 	var currentCommandName = currentCommandAndArgs.shift();
 	var currentOptions = argv.filter(isOption);
 	var currentCommand = getCommandByCommandName(currentCommandName);
