@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 var commandList = [] , furious_des ;
-exports.execute = function(argv , description , noArgsOperation , commonOperation){
+exports.execute = function(argv , description , noCommandOrOptionOperation , commonOperation){
 	//assign descrpition 
-	furious_des = description; commonOperation();
+	furious_des = description; commonOperation(argv);
 	//remove node command and filename
 	argv.shift();argv.shift();
 	//remove command and arg
@@ -10,7 +10,7 @@ exports.execute = function(argv , description , noArgsOperation , commonOperatio
 		var first = item.substr(0,2);
 		return first[0] == '-' || first == '--';
 	};
-	if(argv.length == 0) { noArgsOperation(); return ; }
+	if(argv.length == 0) { noCommandOrOptionOperation(); return ; }
 	var currentCommandAndArgs = argv.filter(function(item){ return !isOption(item); });
 	var currentCommandName = currentCommandAndArgs.shift();
 	var currentOptions = argv.filter(isOption);
