@@ -48,8 +48,8 @@ exports.command = function(name , description ,  defaultOperation){
 var Command = function(command , description ,  operation ) { 
 	this.command = command ; this.index = -1 ; this.operation = operation ; this.description = description ;
 	this.args  = [] , this.options = [] ; 
-	this.option = function(optionsArray , description , optionOperation ){
-			if(isNotValidFunction(optionOperation)) return;
+	this.option = function(optionsArray , description , optionOperation ){ 
+			if(! ( optionsArray || (optionsArray instanceof Array ) || description ) || isNotValidFunction(optionOperation)) return;
 			commandList[this.index].options.push(new Option(optionsArray , description , optionOperation));
 			return this;
 	};
