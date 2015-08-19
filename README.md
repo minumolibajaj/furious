@@ -36,7 +36,7 @@ furious
   });
 ```
 
-### .option( optionNamesArray , description , callback)
+### .option(optionNamesArray , description , callback)
 Create options for already existing command.
 - optionNamesArray `array` - Option names. Each option name __should start with - or --__
 - description `array` - Description about the Option.
@@ -54,6 +54,17 @@ furious
   });
 ```
 In this case ,both  ``programname upper -h`` and  ``programname upper --help`` invoke the same callback.
+
+### .alias( aliasArray )
+Specify Alias for commands.
+```javascript
+furious
+  .command('upper' , 'print upper case values' , function(args){
+    var firstArg = args[0];
+    console.log(firstArg.toUpperCase());
+  })
+  .alias(['up' , 'u']);
+```
 
 ### .execute(argv , description , noCommandOrOptionOperation , commonOperation)
 This is where the user given command on the terminal is parsed and executed. 
