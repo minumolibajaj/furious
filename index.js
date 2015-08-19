@@ -37,9 +37,7 @@ exports.command = function(name , description ,  defaultOperation){
 	var registeredCommand =  new Command(name , description , defaultOperation); 
 	commandList.push(registeredCommand);
 	var getIndexOfCommandInList = function(command){
-		return (function () {
-			for (var i = 0; i < commandList.length; i++) return commandList[i].command == this.command ? i : new Error('Command not found.');
-		}).call(command);	
+		for (var i = 0; i < commandList.length; i++) if( commandList[i].command == command.command ) return i ;	
 	};
 	var index = getIndexOfCommandInList(registeredCommand);
 	commandList[index].index = index; 
@@ -47,20 +45,21 @@ exports.command = function(name , description ,  defaultOperation){
 };
 var Command = function(command , description ,  operation ) { 
 	this.command = command ; this.index = -1 ; this.operation = operation ; this.description = description ;
-	this.args  = [] , this.options = [] ; 
+	this.args  = [] , this.options = [] ,this.aliasArr = [] ; 
 	this.option = function(optionsArray , description , optionOperation ){ 
 			if(! ( optionsArray || (optionsArray instanceof Array ) || description ) || isNotValidFunction(optionOperation)) return;
 			commandList[this.index].options.push(new Option(optionsArray , description , optionOperation));
 			return this;
 	};
+	this.alias = function(arr){ this.aliasArr = arr; };
 };
 var getCommandByCommandName = function(name){
 	//if operation for a command is specified twice then , first definition will be considered and rest are rejected. 
 	return commandList.filter(function(cmd){ return cmd.command == name; })[0];
-}
+};
 //Option
 var Option = function( optionNames , description ,   operation ){
 	this.optionNames = optionNames;
 	this.description = description; 
 	this.operation = operation;
-}
+};
